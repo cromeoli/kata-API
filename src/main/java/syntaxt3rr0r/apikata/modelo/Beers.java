@@ -10,17 +10,19 @@ import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 public class Beers {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @ManyToOne
     @JoinColumn(name="cat_id")
     @NotFound(action = NotFoundAction.IGNORE)
-    private Categories categorie;
+    private Categories categories;
 
     @ManyToOne
     @JoinColumn(name="style_id")

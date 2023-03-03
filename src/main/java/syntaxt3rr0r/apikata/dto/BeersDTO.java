@@ -10,6 +10,6 @@ public class BeersDTO {
     private long id;
     private String name;
     private Categories descript;
-    private String categorieCat_name;
+    private String categoriesCat_name;
 
 }
