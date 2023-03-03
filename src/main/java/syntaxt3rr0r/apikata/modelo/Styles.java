@@ -1,11 +1,12 @@
 package syntaxt3rr0r.apikata.modelo;
 
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Data

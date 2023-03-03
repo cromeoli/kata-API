@@ -1,15 +1,16 @@
 package syntaxt3rr0r.apikata.controller;
 
-import com.example.api.dto.BeersDTO;
-import com.example.api.dto.converter.BeersDTOConverter;
-import com.example.api.modelo.Beers;
-import com.example.api.repo.BeersRepo;
-import com.example.api.repo.CategoriesRepo;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import syntaxt3rr0r.apikata.dto.BeersDTO;
+import syntaxt3rr0r.apikata.dto.converter.BeersDTOConverter;
+import syntaxt3rr0r.apikata.modelo.Beers;
+import syntaxt3rr0r.apikata.repo.BeersRepo;
+import syntaxt3rr0r.apikata.repo.CategoriesRepo;
 
 import java.util.List;
 import java.util.stream.Collectors;
