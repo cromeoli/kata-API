@@ -33,3 +33,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Conexión a la BBDD de cada uno ###
+src/main/resources/application.properties
