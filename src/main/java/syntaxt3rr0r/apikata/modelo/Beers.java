@@ -4,6 +4,8 @@ package syntaxt3rr0r.apikata.modelo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,10 +19,12 @@ public class Beers {
     private String name;
     @ManyToOne
     @JoinColumn(name="cat_id")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Categories categorie;
 
     @ManyToOne
     @JoinColumn(name="style_id")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Styles style;
     private float abv;
     private float ibu;
