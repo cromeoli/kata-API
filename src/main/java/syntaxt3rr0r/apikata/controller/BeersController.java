@@ -28,7 +28,7 @@ public class BeersController {
      * @return 404 si no hay cervezas, 200 y lista de cervezas si hay una o más
      */
     @GetMapping("/beers")
-    public ResponseEntity<?> getAllBeers() {
+    public ResponseEntity <?> getAllBeers() {
         List <Beers> result = beersService.findAll();
 
         if(result.isEmpty()) {
@@ -46,7 +46,7 @@ public class BeersController {
      * @param id
      * @return 404 si no encuentra la cerveza, si la encuentra devuelve 200 y la cerveza
      */
-    @GetMapping("/beers/{id}")
+    @GetMapping("/beer/{id}")
     public ResponseEntity<?> getOneBeer(@PathVariable Long id) {
         Beers result = beersService.findById(id).orElse(null);
         return (result == null) ?
@@ -55,11 +55,11 @@ public class BeersController {
     }
 
     /**
-     *
+     * Crea nueva cerveza
      * @param newBeerData datos de la nueva cerveza a crear
-     * @return código 201 cuando ha creado la entrada en la bd
+     * @return 201 y la cerveza creada
      */
-    @PostMapping("/beers")
+    @PostMapping("/beer")
     public ResponseEntity<?> newBeer(@RequestBody CreateBeersDTO newBeerData){
 
         Beers beers = beersService.newBeers(newBeerData);
