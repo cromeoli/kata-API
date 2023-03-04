@@ -1,8 +1,10 @@
 package syntaxt3rr0r.apikata.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import syntaxt3rr0r.apikata.dto.CreateBeersDTO;
+import syntaxt3rr0r.apikata.dto.UpdateBeersDTO;
 import syntaxt3rr0r.apikata.modelo.Beers;
 import syntaxt3rr0r.apikata.modelo.Categories;
 import syntaxt3rr0r.apikata.modelo.Styles;
@@ -17,6 +19,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class BeersService extends BaseService<Beers, Long, BeersRepo> {
 
+    private final BeersRepo beersRepo;
     private final CategoriesRepo categoriesRepo;
     private final StylesRepo stylesRepo;
 
@@ -37,6 +40,23 @@ public class BeersService extends BaseService<Beers, Long, BeersRepo> {
         beers.setFilepath(newBeerData.getFilepath());
         beers.setDescript(newBeerData.getDescript());
         beers.setAdd_user(newBeerData.getAdd_user());
+        beers.setLast_mod(now);
+
+        return save(beers);
+    }
+
+    public Beers updateBeer(UpdateBeersDTO newBeerData, Long id){
+        Beers beers = beersRepo.findById(id).orElse(null);
+        if(beers == null)
+            return null;
+
+        Date now = new Date();
+        if (newBeerData.getName() != null)
+            beers.setName(newBeerData.getName());
+        if (newBeerData.getFilepath() != null)
+            beers.setFilepath(newBeerData.getFilepath());
+        if (newBeerData.getDescript() != null)
+            beers.setDescript(newBeerData.getDescript());
         beers.setLast_mod(now);
 
         return save(beers);

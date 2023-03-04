@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import syntaxt3rr0r.apikata.dto.BeersDTO;
 import syntaxt3rr0r.apikata.dto.CreateBeersDTO;
+import syntaxt3rr0r.apikata.dto.UpdateBeersDTO;
 import syntaxt3rr0r.apikata.dto.converter.BeersDTOConverter;
 import syntaxt3rr0r.apikata.modelo.Beers;
 
@@ -62,12 +63,25 @@ public class BeersController {
     @PostMapping("/beer")
     public ResponseEntity<?> newBeer(@RequestBody CreateBeersDTO newBeerData){
 
-        Beers beers = beersService.newBeers(newBeerData);
-
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(beersService.save(beers));
+                .body(beersService.newBeers(newBeerData));
     }
 
+    /**
+     * Actualiza los datos nombre, descripción ó ruta del archivo
+     * @param editBeer datos nuevos
+     * @param id de la cerveza a modificar
+     * @return 200 Ok si la edición tiene éxito, 404 si no se encuentra la cerveza
+     */
+    @PutMapping("/beer/{id}")
+    public ResponseEntity<?> editBeer (@RequestBody UpdateBeersDTO editBeer, @PathVariable Long id){
 
+        Beers updatedBeer = beersService.updateBeer(editBeer, id);
+
+        if (updatedBeer == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(updatedBeer);
+    }
 
 }
