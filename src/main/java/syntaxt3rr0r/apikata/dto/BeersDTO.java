@@ -9,7 +9,7 @@ import syntaxt3rr0r.apikata.modelo.Categories;
 public class BeersDTO {
     private long id;
     private String name;
-    private Categories descript;
+    private String descript;
     private String categoriesCat_name;
 
 }

@@ -11,11 +11,10 @@ import syntaxt3rr0r.apikata.dto.converter.BeersDTOConverter;
 import syntaxt3rr0r.apikata.modelo.Beers;
 import syntaxt3rr0r.apikata.modelo.Categories;
 import syntaxt3rr0r.apikata.modelo.Styles;
-import syntaxt3rr0r.apikata.repo.BeersRepo;
 import syntaxt3rr0r.apikata.repo.CategoriesRepo;
 import syntaxt3rr0r.apikata.repo.StylesRepo;
+import syntaxt3rr0r.apikata.service.BeersService;
 
-import javax.swing.text.Style;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BeersController {
 
-    private final BeersRepo beersRepo;
+    private final BeersService beersService;
     private final BeersDTOConverter beersDTOConverter;
     private final CategoriesRepo categoriesRepo;
     private final StylesRepo stylesRepo;
@@ -36,7 +35,7 @@ public class BeersController {
      */
     @GetMapping("/beers")
     public ResponseEntity<?> getAllBeers() {
-        List <Beers> result = beersRepo.findAll();
+        List <Beers> result = beersService.findAll();
 
         if(result.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -55,7 +54,7 @@ public class BeersController {
      */
     @GetMapping("/beers/{id}")
     public ResponseEntity<?> getOneBeer(@PathVariable Long id) {
-        Beers result = beersRepo.findById(id).orElse(null);
+        Beers result = beersService.findById(id).orElse(null);
         return (result == null) ?
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(result);
@@ -83,7 +82,7 @@ public class BeersController {
         beers.setLast_mod(now);
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(beersRepo.save(beers));
+                .body(beersService.save(beers));
     }
 
 
