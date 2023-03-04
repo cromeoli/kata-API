@@ -52,7 +52,7 @@ public class StylesController {
      * @param id
      * @return 404 si no encuentra el estilo, si lo encuentra devuelve 200 y el estilo
      */
-    @GetMapping("/styles/{id}")
+    @GetMapping("/style/{id}")
     public ResponseEntity<?> getOneStyle(@PathVariable Long id) {
         Styles result = stylesRepo.findById(id).orElse(null);
         return (result == null) ?

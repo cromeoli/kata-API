@@ -14,7 +14,7 @@ import syntaxt3rr0r.apikata.modelo.Categories;
 @Getter @Setter
 public class StylesDTO {
     private long id;
-    private String name;
-    private String categoriesCat_name;
+    private String style_name;
+    private String categoryCat_name;
 
 }
