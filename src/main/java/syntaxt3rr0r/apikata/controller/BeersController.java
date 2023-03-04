@@ -43,7 +43,7 @@ public class BeersController {
     }
 
     /**
-     *  Obtengo una cerveza por su id
+     * Obtengo una cerveza por su id
      * @param id
      * @return 404 si no encuentra la cerveza, si la encuentra devuelve 200 y la cerveza
      */
@@ -83,5 +83,22 @@ public class BeersController {
 
         return ResponseEntity.ok(updatedBeer);
     }
+
+    /**
+     * Borra una cerveza
+     * @param id de la cerveza a borrar
+     * @return Código 204 sin contenido o 404 si la cerveza no existe
+     */
+    @DeleteMapping("/beer/{id}")
+    public ResponseEntity<?> deleteBeers (@PathVariable Long id){
+        Beers beer = beersService.findById(id).orElse(null);
+        if(beer == null)
+            return ResponseEntity.notFound().build();
+
+        beersService.delete(beer);
+        return ResponseEntity.noContent().build();
+
+    }
+
 
 }
