@@ -2,22 +2,14 @@ package syntaxt3rr0r.apikata.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import syntaxt3rr0r.apikata.dto.BeersDTO;
 import syntaxt3rr0r.apikata.dto.BreweriesDTO;
-import syntaxt3rr0r.apikata.dto.CreateBeersDTO;
 import syntaxt3rr0r.apikata.dto.converter.BreweriesDTOConverter;
-import syntaxt3rr0r.apikata.modelo.Beers;
 import syntaxt3rr0r.apikata.modelo.Breweries;
-import syntaxt3rr0r.apikata.modelo.Categories;
-import syntaxt3rr0r.apikata.modelo.Styles;
 import syntaxt3rr0r.apikata.repo.BreweriesRepo;
-import syntaxt3rr0r.apikata.repo.CategoriesRepo;
-import syntaxt3rr0r.apikata.repo.StylesRepo;
 
-import java.util.Date;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,8 +19,6 @@ public class BreweriesController {
 
     private final BreweriesRepo breweriesRepo;
     private final BreweriesDTOConverter breweriesDTOConverter;
-    private final CategoriesRepo categoriesRepo;
-    private final StylesRepo stylesRepo;
 
 
     /**

@@ -2,8 +2,10 @@ package syntaxt3rr0r.apikata.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import syntaxt3rr0r.apikata.modelo.Categories;
 
+/**
+* DTO para mostrar información más breve de las cervecerías
+* */
 @Getter @Setter
 public class BreweriesDTO {
     private long id;
