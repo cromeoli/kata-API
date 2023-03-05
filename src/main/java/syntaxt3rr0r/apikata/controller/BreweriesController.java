@@ -46,8 +46,8 @@ public class BreweriesController {
      * @return 404 si no encuentra la cervecería,
      *         200 si la encuentra, junto a información detallada de la cervecería.
      */
-    @GetMapping("/breweries/{id}")
-    public ResponseEntity<?> getOneBreweries(@PathVariable Long id) {
+    @GetMapping("/brewerie/{id}")
+    public ResponseEntity<?> getOneBrewerie(@PathVariable Long id) {
         Breweries brewerie = breweriesRepo.findById(id).orElse(null);
         return (brewerie == null) ?
                 ResponseEntity.notFound().build() :
