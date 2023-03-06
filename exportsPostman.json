@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "8b83632a-a23d-45b5-b268-beb9b8fdbba1",
+		"name": "V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24959722"
+	},
+	"item": [
+		{
+			"name": "Beer",
+			"item": [
+				{
+					"name": "Todas las cervezas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/beers",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"beers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Una cerverza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/beer/5917",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"beer",
+								"5917"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NuevaCerveza",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ejemplo de Cerveza2\",\n    \"id_Category\": 1,\n    \"id_Style\": 2,\n    \"abv\": 5.6,\n    \"ibu\": 35.0,\n    \"srm\": 12.0,\n    \"upc\": 1,\n    \"filepath\": \"/path/to/image.jpg\",\n    \"descript\": \"Esta es una cerveza de ejemplo para probar el formato JSON.\",\n    \"add_user\": 1234\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3009/beer/",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"beer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarCerveza",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ejemplo de Cerveza \",\n    \"filepath\": \"/path/to/image.jpg\"\n   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3009/beer/5919",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"beer",
+								"5919"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarCerveza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/beer/5918",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"beer",
+								"5918"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Breweries",
+			"item": [
+				{
+					"name": "Todas las cervecerías",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/breweries",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"breweries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Una cervecería",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/brewerie/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"brewerie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Todas las categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Una categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/categorie/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"categorie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Styles",
+			"item": [
+				{
+					"name": "Todos los estilos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/styles/",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"styles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Un estilo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3009/style/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"style",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
