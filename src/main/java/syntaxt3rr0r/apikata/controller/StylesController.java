@@ -10,6 +10,8 @@ import syntaxt3rr0r.apikata.dto.CreateBeersDTO;
 import syntaxt3rr0r.apikata.dto.StylesDTO;
 import syntaxt3rr0r.apikata.dto.converter.BeersDTOConverter;
 import syntaxt3rr0r.apikata.dto.converter.StylesDTOConverter;
+import syntaxt3rr0r.apikata.error.BreweryNotFoundException;
+import syntaxt3rr0r.apikata.error.StyleNotFoundException;
 import syntaxt3rr0r.apikata.modelo.Beers;
 import syntaxt3rr0r.apikata.modelo.Categories;
 import syntaxt3rr0r.apikata.modelo.Styles;
@@ -38,7 +40,7 @@ public class StylesController {
         List <Styles> result = stylesRepo.findAll();
 
         if(result.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new StyleNotFoundException();
         } else {
             List<StylesDTO> dtoList = result.stream().map(stylesDTOConverter::convertToDto)
                     .collect(Collectors.toList());
@@ -54,7 +56,7 @@ public class StylesController {
      */
     @GetMapping("/style/{id}")
     public ResponseEntity<?> getOneStyle(@PathVariable Long id) {
-        Styles result = stylesRepo.findById(id).orElse(null);
+        Styles result = stylesRepo.findById(id).orElseThrow(() -> new StyleNotFoundException(id));
         return (result == null) ?
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(result);

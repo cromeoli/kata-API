@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import syntaxt3rr0r.apikata.dto.BreweriesDTO;
 import syntaxt3rr0r.apikata.dto.converter.BreweriesDTOConverter;
+import syntaxt3rr0r.apikata.error.BeerNotFoundException;
+import syntaxt3rr0r.apikata.error.BreweryNotFoundException;
 import syntaxt3rr0r.apikata.modelo.Breweries;
 import syntaxt3rr0r.apikata.repo.BreweriesRepo;
 
@@ -31,7 +33,7 @@ public class BreweriesController {
         List <Breweries> result = breweriesRepo.findAll();
 
         if(result.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new BreweryNotFoundException();
         } else {
             List<BreweriesDTO> breweriesDTOList = result.stream().map(breweriesDTOConverter::convertToDto)
                     .collect(Collectors.toList());
@@ -48,7 +50,7 @@ public class BreweriesController {
      */
     @GetMapping("/brewerie/{id}")
     public ResponseEntity<?> getOneBreweries(@PathVariable Long id) {
-        Breweries brewerie = breweriesRepo.findById(id).orElse(null);
+        Breweries brewerie = breweriesRepo.findById(id).orElseThrow(()-> new BreweryNotFoundException(id));
         return (brewerie == null) ?
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(brewerie);

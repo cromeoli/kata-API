@@ -10,6 +10,27 @@
 			"name": "Beer",
 			"item": [
 				{
+					"name": "Errores",
+					"item": [
+						{
+							"name": "Beer ID not found",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Error general",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Todas las cervezas",
 					"request": {
 						"method": "GET",
@@ -127,6 +148,19 @@
 			"name": "Breweries",
 			"item": [
 				{
+					"name": "Error",
+					"item": [
+						{
+							"name": "Brewerie ID not found",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Todas las cervecerías",
 					"request": {
 						"method": "GET",
@@ -169,6 +203,19 @@
 			"name": "Categories",
 			"item": [
 				{
+					"name": "Error",
+					"item": [
+						{
+							"name": "Category ID not found",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Todas las categorias",
 					"request": {
 						"method": "GET",
@@ -210,6 +257,19 @@
 		{
 			"name": "Styles",
 			"item": [
+				{
+					"name": "Error",
+					"item": [
+						{
+							"name": "Styles ID not found",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Todos los estilos",
 					"request": {

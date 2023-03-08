@@ -9,6 +9,8 @@ import syntaxt3rr0r.apikata.dto.BeersDTO;
 import syntaxt3rr0r.apikata.dto.CreateBeersDTO;
 import syntaxt3rr0r.apikata.dto.UpdateBeersDTO;
 import syntaxt3rr0r.apikata.dto.converter.BeersDTOConverter;
+import syntaxt3rr0r.apikata.error.BeerNotFoundException;
+import syntaxt3rr0r.apikata.error.BreweryNotFoundException;
 import syntaxt3rr0r.apikata.modelo.Beers;
 
 import syntaxt3rr0r.apikata.service.BeersService;
@@ -33,7 +35,7 @@ public class BeersController {
         List <Beers> result = beersService.findAll();
 
         if(result.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new BeerNotFoundException();
         } else {
             List<BeersDTO> dtoList = result.stream().map(beersDTOConverter::convertToDto)
                     .collect(Collectors.toList());
@@ -49,7 +51,7 @@ public class BeersController {
      */
     @GetMapping("/beer/{id}")
     public ResponseEntity<?> getOneBeer(@PathVariable Long id) {
-        Beers result = beersService.findById(id).orElse(null);
+        Beers result = beersService.findById(id).orElseThrow(() -> new BeerNotFoundException(id));
         return (result == null) ?
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(result);

@@ -19,9 +19,9 @@ public class APIError {
     @NonNull
     private HttpStatus state;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
-    private LocalDateTime currentDateTime = LocalDateTime.now();
-
     @NonNull
     private String message;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+    private LocalDateTime currentDateTime = LocalDateTime.now();
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import syntaxt3rr0r.apikata.dto.CategoriesDTO;
 
+import syntaxt3rr0r.apikata.error.BreweryNotFoundException;
+import syntaxt3rr0r.apikata.error.CategoryNotFoundException;
 import syntaxt3rr0r.apikata.modelo.Categories;
 import syntaxt3rr0r.apikata.repo.CategoriesRepo;
 import syntaxt3rr0r.apikata.dto.converter.CategoriesDTOConverter;
@@ -27,7 +29,7 @@ public class CategoriesController {
         List <Categories> result = categoriesRepo.findAll();
 
         if(result.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new CategoryNotFoundException();
         } else {
             List<CategoriesDTO> dtoList = result.stream().map(categoriesDTOConverter::convertToDto)
                     .collect(Collectors.toList());
@@ -39,7 +41,7 @@ public class CategoriesController {
     //Obtenemos solo una categoría en base a su ID
     @GetMapping("/categorie/{id}")
     public ResponseEntity<?> getOneCategorie(@PathVariable Long id) {
-        Categories result = categoriesRepo.findById(id).orElse(null);
+        Categories result = categoriesRepo.findById(id).orElseThrow(() -> new CategoryNotFoundException(id));
         return (result == null) ?
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(result);
